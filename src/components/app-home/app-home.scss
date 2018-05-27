@@ -1,5 +1,14 @@
-app-home {
-  ion-scroll {
-    padding: 15px;
+:host {
+    ion-content {
+      /deep/ion-scroll {
+        padding: 15px;
+        .scroll-inner {
+          .cards-container {
+            display: grid;
+            grid-row-gap: 3.125rem;
+            grid-template-columns: repeat(3, 23.5rem);
+          }
+        }
+    }
   }
 }

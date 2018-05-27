@@ -12,3 +12,12 @@ export function urlB64ToUint8Array(base64String: string) {
   }
   return outputArray;
 }
+
+export function setBackgroundImageStyles(url: string){
+    return {
+        'background-repeat': 'no-repeat',
+        'background-attachment': 'center',
+        'background-size': 'cover',
+        'background-image': 'url("' + url + '")'
+    };
+}

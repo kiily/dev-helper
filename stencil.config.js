@@ -10,9 +10,12 @@ exports.config = {
     }
   ],
   globalScript: 'src/global/app.ts',
-  globalStyle: 'src/global/app.css',
+  globalStyle: 'src/global/styles/_global.scss',
   plugins: [
-    sass()
+    sass(
+      {injectGlobalPaths: [
+      'src/global/styles/_variables.scss'
+    ]})
   ],
   enableCache: false
 };

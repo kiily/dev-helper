@@ -23,18 +23,25 @@ declare global {
   interface HTMLAttributes {}
 }
 
-import 'ionicons';
+import '@stencil/router';
 import '@ionic/core';
+import 'ionicons';
 
+import {
+  RouterHistory,
+} from '@stencil/router';
 import {
   EventEmitter,
 } from '@stencil/core';
+import {
+  ITopic,
+} from './helpers/interfaces';
 
 declare global {
 
   namespace StencilComponents {
     interface AppHome {
-
+      'history': RouterHistory;
     }
   }
 
@@ -57,7 +64,7 @@ declare global {
   }
   namespace JSXElements {
     export interface AppHomeAttributes extends HTMLAttributes {
-
+      'history'?: RouterHistory;
     }
   }
 }
@@ -162,6 +169,40 @@ declare global {
   namespace JSXElements {
     export interface MyAppAttributes extends HTMLAttributes {
 
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface TopicCard {
+      'topic': ITopic;
+    }
+  }
+
+  interface HTMLTopicCardElement extends StencilComponents.TopicCard, HTMLStencilElement {}
+
+  var HTMLTopicCardElement: {
+    prototype: HTMLTopicCardElement;
+    new (): HTMLTopicCardElement;
+  };
+  interface HTMLElementTagNameMap {
+    'topic-card': HTMLTopicCardElement;
+  }
+  interface ElementTagNameMap {
+    'topic-card': HTMLTopicCardElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'topic-card': JSXElements.TopicCardAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface TopicCardAttributes extends HTMLAttributes {
+      'onCardClicked'?: (event: CustomEvent<ITopic>) => void;
+      'topic'?: ITopic;
     }
   }
 }

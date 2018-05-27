@@ -36,6 +36,7 @@ export class MyApp {
         <ion-router useHash={false}>
           <ion-route url='/' component='app-home'></ion-route>
           <ion-route url='/profile/:name' component='app-profile'></ion-route>
+          <ion-route url='/topic' component='topic-detail'></ion-route>
         </ion-router>
         <ion-nav></ion-nav>
       </ion-app>
