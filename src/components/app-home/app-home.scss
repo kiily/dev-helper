@@ -1,12 +1,13 @@
 :host {
     ion-content {
+      background: $black;
       /deep/ion-scroll {
+        background: transparent;
         padding: 15px;
         .scroll-inner {
           .cards-container {
             display: grid;
-            grid-row-gap: 3.125rem;
-            grid-template-columns: repeat(3, 23.5rem);
+            grid-template-columns: repeat(auto-fit, 13.625rem);
           }
         }
     }

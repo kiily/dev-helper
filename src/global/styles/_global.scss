@@ -1,1 +1,9 @@
+// @import url('https://fonts.googleapis.com/css?family=Lato');
+
 @import './_variables.scss';
+@import './mixins.scss';
+
+:root {
+    font-family: $font-family;
+    font-size: $base-font-size;
+}
