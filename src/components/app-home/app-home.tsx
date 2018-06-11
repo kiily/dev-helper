@@ -1,4 +1,4 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, Prop, State } from '@stencil/core';
 import { RouterHistory } from '@stencil/router';
 
 @Component({
@@ -10,32 +10,45 @@ export class AppHome {
 
   @Prop() history: RouterHistory;
 
-  testTopic = {
+  @State() isMenuOpen: boolean = false;
+  
+  angular = {
     imgSrc: './assets/topics/angular-logo.svg',
     title: 'Angular',
-    subtitle: 'Angular-related resources and cheatsheets'
+    subtitle: 'Angularize your code'
   }
-o
+
+  commandLine = {
+    imgSrc: './assets/topics/command-line-logo.svg',
+    title: 'Command Line',
+    subtitle: 'Take control of CMD'
+  }
+
   navigateToTopic(){
     this.history.push('/topic');
   }
 
-  render() {
-    return [
-      <ion-header>
-        <ion-toolbar color='primary'>
-          <ion-title>The Dev(h)el(o)per</ion-title>
-        </ion-toolbar>
-      </ion-header>,
+  toggleMenu(event: CustomEvent) {
+    if (event) {
+      // Toggle menu state
+      this.isMenuOpen = !this.isMenuOpen;
+    }
 
+  }
+
+  render() {
+    let menuMargin = this.isMenuOpen ? '20%' : '0';
+    return [
+      <dev-navbar onMenuClicked={(event: CustomEvent) => this.toggleMenu(event)} heading="dev(h)el(o)per"></dev-navbar>,
       <ion-content>
-        <div class="cards-container">
-            <topic-card onCardClicked={this.navigateToTopic.bind(this)}topic={this.testTopic}></topic-card>
-            <topic-card onCardClicked={this.navigateToTopic.bind(this)}topic={this.testTopic}></topic-card>
-            <topic-card onCardClicked={this.navigateToTopic.bind(this)}topic={this.testTopic}></topic-card>
-            <topic-card onCardClicked={this.navigateToTopic.bind(this)}topic={this.testTopic}></topic-card>
-            <topic-card onCardClicked={this.navigateToTopic.bind(this)}topic={this.testTopic}></topic-card>
-            <topic-card onCardClicked={this.navigateToTopic.bind(this)}topic={this.testTopic}></topic-card>
+        {this.isMenuOpen ? <dev-side-menu></dev-side-menu> : null}
+        <div style={{ 'margin-left': menuMargin }} class="cards-container">
+            <topic-card onCardClicked={this.navigateToTopic.bind(this)}topic={this.angular}></topic-card>
+            <topic-card onCardClicked={this.navigateToTopic.bind(this)}topic={this.angular}></topic-card>
+            <topic-card onCardClicked={this.navigateToTopic.bind(this)}topic={this.angular}></topic-card>
+            <topic-card onCardClicked={this.navigateToTopic.bind(this)}topic={this.angular}></topic-card>
+            <topic-card onCardClicked={this.navigateToTopic.bind(this)}topic={this.commandLine}></topic-card>
+            <topic-card onCardClicked={this.navigateToTopic.bind(this)}topic={this.commandLine}></topic-card>
         </div>
         <ion-button href='/profile/stencil'>
           Profile page

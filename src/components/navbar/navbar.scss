@@ -1,0 +1,9 @@
+:host() {
+    ion-header {
+        ion-toolbar {
+            /deep/.toolbar-content {
+                text-align: center;
+            }
+        }    
+    }
+}

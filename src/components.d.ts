@@ -34,6 +34,7 @@ import {
   EventEmitter,
 } from '@stencil/core';
 import {
+  IMenuEntry,
   ITopic,
 } from './helpers/interfaces';
 
@@ -169,6 +170,75 @@ declare global {
   namespace JSXElements {
     export interface MyAppAttributes extends HTMLAttributes {
 
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface DevNavbar {
+      'color': string;
+      'heading': string;
+    }
+  }
+
+  interface HTMLDevNavbarElement extends StencilComponents.DevNavbar, HTMLStencilElement {}
+
+  var HTMLDevNavbarElement: {
+    prototype: HTMLDevNavbarElement;
+    new (): HTMLDevNavbarElement;
+  };
+  interface HTMLElementTagNameMap {
+    'dev-navbar': HTMLDevNavbarElement;
+  }
+  interface ElementTagNameMap {
+    'dev-navbar': HTMLDevNavbarElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'dev-navbar': JSXElements.DevNavbarAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface DevNavbarAttributes extends HTMLAttributes {
+      'color'?: string;
+      'heading'?: string;
+      'onMenuClicked'?: (event: CustomEvent<boolean>) => void;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface DevSideMenu {
+      'menuEntries': IMenuEntry[];
+    }
+  }
+
+  interface HTMLDevSideMenuElement extends StencilComponents.DevSideMenu, HTMLStencilElement {}
+
+  var HTMLDevSideMenuElement: {
+    prototype: HTMLDevSideMenuElement;
+    new (): HTMLDevSideMenuElement;
+  };
+  interface HTMLElementTagNameMap {
+    'dev-side-menu': HTMLDevSideMenuElement;
+  }
+  interface ElementTagNameMap {
+    'dev-side-menu': HTMLDevSideMenuElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'dev-side-menu': JSXElements.DevSideMenuAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface DevSideMenuAttributes extends HTMLAttributes {
+      'menuEntries'?: IMenuEntry[];
     }
   }
 }

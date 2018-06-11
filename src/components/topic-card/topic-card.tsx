@@ -28,15 +28,15 @@ export class TopicCard {
   }
 
   onMouseEnter(event: UIEvent) {
-    console.log(event);
-    setAnimation(animations.FADE_IN_AND_SCALE, this.textContainer, { open: true} );
+    event ? setAnimation(animations.FADE_IN_AND_SCALE, this.textContainer, { open: true} ) : null;
   }
 
   onMouseLeave(event: UIEvent) {
-    console.log(event);
-    setTimeout(() => {
-      setAnimation(animations.FADE_IN_AND_SCALE, this.textContainer, { open: false} ); 
-    }, 300);
+    if (event) {
+      setTimeout(() => {
+        setAnimation(animations.FADE_IN_AND_SCALE, this.textContainer, { open: false} ); 
+      }, 300);
+    }
   }
 
   render(): JSX.Element {

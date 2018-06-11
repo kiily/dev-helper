@@ -67,15 +67,7 @@ export class AppProfile {
 
   render() {
     return [
-      <ion-header>
-        <ion-toolbar color='primary'>
-          <ion-buttons slot="start">
-            <ion-back-button defaultHref='/'></ion-back-button>
-          </ion-buttons>
-
-          <ion-title>Ionic PWA Toolkit</ion-title>
-        </ion-toolbar>
-      </ion-header>,
+      <dev-navbar></dev-navbar>,
 
       <ion-content>
         <p>

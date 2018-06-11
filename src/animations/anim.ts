@@ -9,6 +9,8 @@ export function animationFactory(animationName: string, options: any = {}): any 
     switch (animationName) {
         case FADE_IN_AND_SCALE:
             return fadeInAndScale(options);
+        case SLIDE_IN_RIGHT:
+            return slideInRight(options);
         default:
             return {};
     }
@@ -18,7 +20,6 @@ const FADE_IN_AND_SCALE = 'fade_in_and_scale';
 export function fadeInAndScale(options?: { open: boolean}) {
     const start = options.open ? 0 : 1;
     const end = options.open ? 1 : 0;
-    console.log(start, end);
     return {
         opacity: [start, end],
         scale: [start, end],
@@ -28,8 +29,14 @@ export function fadeInAndScale(options?: { open: boolean}) {
     }
 }
 
+const SLIDE_IN_RIGHT = 'slide_in_right'
+export function slideInRight(options?: { open: boolean}) {
+    console.log(options);
+}
+
 export const animations = {
-    FADE_IN_AND_SCALE  
+    FADE_IN_AND_SCALE,
+    SLIDE_IN_RIGHT
 }
 
 
