@@ -23,13 +23,10 @@ declare global {
   interface HTMLAttributes {}
 }
 
-import '@stencil/router';
 import '@ionic/core';
 import 'ionicons';
+import '@stencil/router';
 
-import {
-  RouterHistory,
-} from '@stencil/router';
 import {
   EventEmitter,
 } from '@stencil/core';
@@ -37,68 +34,38 @@ import {
   IMenuEntry,
   ITopic,
 } from './helpers/interfaces';
+import {
+  RouterHistory,
+} from '@stencil/router';
 
 declare global {
 
   namespace StencilComponents {
-    interface AppHome {
-      'history': RouterHistory;
+    interface MyApp {
+
     }
   }
 
-  interface HTMLAppHomeElement extends StencilComponents.AppHome, HTMLStencilElement {}
+  interface HTMLMyAppElement extends StencilComponents.MyApp, HTMLStencilElement {}
 
-  var HTMLAppHomeElement: {
-    prototype: HTMLAppHomeElement;
-    new (): HTMLAppHomeElement;
+  var HTMLMyAppElement: {
+    prototype: HTMLMyAppElement;
+    new (): HTMLMyAppElement;
   };
   interface HTMLElementTagNameMap {
-    'app-home': HTMLAppHomeElement;
+    'my-app': HTMLMyAppElement;
   }
   interface ElementTagNameMap {
-    'app-home': HTMLAppHomeElement;
+    'my-app': HTMLMyAppElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      'app-home': JSXElements.AppHomeAttributes;
+      'my-app': JSXElements.MyAppAttributes;
     }
   }
   namespace JSXElements {
-    export interface AppHomeAttributes extends HTMLAttributes {
-      'history'?: RouterHistory;
-    }
-  }
-}
+    export interface MyAppAttributes extends HTMLAttributes {
 
-
-declare global {
-
-  namespace StencilComponents {
-    interface AppProfile {
-      'name': string;
-    }
-  }
-
-  interface HTMLAppProfileElement extends StencilComponents.AppProfile, HTMLStencilElement {}
-
-  var HTMLAppProfileElement: {
-    prototype: HTMLAppProfileElement;
-    new (): HTMLAppProfileElement;
-  };
-  interface HTMLElementTagNameMap {
-    'app-profile': HTMLAppProfileElement;
-  }
-  interface ElementTagNameMap {
-    'app-profile': HTMLAppProfileElement;
-  }
-  namespace JSX {
-    interface IntrinsicElements {
-      'app-profile': JSXElements.AppProfileAttributes;
-    }
-  }
-  namespace JSXElements {
-    export interface AppProfileAttributes extends HTMLAttributes {
-      'name'?: string;
     }
   }
 }
@@ -145,39 +112,6 @@ declare global {
 declare global {
 
   namespace StencilComponents {
-    interface MyApp {
-
-    }
-  }
-
-  interface HTMLMyAppElement extends StencilComponents.MyApp, HTMLStencilElement {}
-
-  var HTMLMyAppElement: {
-    prototype: HTMLMyAppElement;
-    new (): HTMLMyAppElement;
-  };
-  interface HTMLElementTagNameMap {
-    'my-app': HTMLMyAppElement;
-  }
-  interface ElementTagNameMap {
-    'my-app': HTMLMyAppElement;
-  }
-  namespace JSX {
-    interface IntrinsicElements {
-      'my-app': JSXElements.MyAppAttributes;
-    }
-  }
-  namespace JSXElements {
-    export interface MyAppAttributes extends HTMLAttributes {
-
-    }
-  }
-}
-
-
-declare global {
-
-  namespace StencilComponents {
     interface DevNavbar {
       'color': string;
       'heading': string;
@@ -206,6 +140,42 @@ declare global {
       'color'?: string;
       'heading'?: string;
       'onMenuClicked'?: (event: CustomEvent<boolean>) => void;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface DevSearchBar {
+      'heading': string;
+      'value': string;
+    }
+  }
+
+  interface HTMLDevSearchBarElement extends StencilComponents.DevSearchBar, HTMLStencilElement {}
+
+  var HTMLDevSearchBarElement: {
+    prototype: HTMLDevSearchBarElement;
+    new (): HTMLDevSearchBarElement;
+  };
+  interface HTMLElementTagNameMap {
+    'dev-search-bar': HTMLDevSearchBarElement;
+  }
+  interface ElementTagNameMap {
+    'dev-search-bar': HTMLDevSearchBarElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'dev-search-bar': JSXElements.DevSearchBarAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface DevSearchBarAttributes extends HTMLAttributes {
+      'heading'?: string;
+      'onMenuClicked'?: (event: CustomEvent<boolean>) => void;
+      'value'?: string;
     }
   }
 }
@@ -273,6 +243,72 @@ declare global {
     export interface TopicCardAttributes extends HTMLAttributes {
       'onCardClicked'?: (event: CustomEvent<ITopic>) => void;
       'topic'?: ITopic;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface AppHome {
+      'history': RouterHistory;
+    }
+  }
+
+  interface HTMLAppHomeElement extends StencilComponents.AppHome, HTMLStencilElement {}
+
+  var HTMLAppHomeElement: {
+    prototype: HTMLAppHomeElement;
+    new (): HTMLAppHomeElement;
+  };
+  interface HTMLElementTagNameMap {
+    'app-home': HTMLAppHomeElement;
+  }
+  interface ElementTagNameMap {
+    'app-home': HTMLAppHomeElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'app-home': JSXElements.AppHomeAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppHomeAttributes extends HTMLAttributes {
+      'history'?: RouterHistory;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface AppProfile {
+      'name': string;
+    }
+  }
+
+  interface HTMLAppProfileElement extends StencilComponents.AppProfile, HTMLStencilElement {}
+
+  var HTMLAppProfileElement: {
+    prototype: HTMLAppProfileElement;
+    new (): HTMLAppProfileElement;
+  };
+  interface HTMLElementTagNameMap {
+    'app-profile': HTMLAppProfileElement;
+  }
+  interface ElementTagNameMap {
+    'app-profile': HTMLAppProfileElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'app-profile': JSXElements.AppProfileAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppProfileAttributes extends HTMLAttributes {
+      'name'?: string;
     }
   }
 }
