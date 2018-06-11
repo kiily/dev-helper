@@ -31,7 +31,14 @@ export function fadeInAndScale(options?: { open: boolean}) {
 
 const SLIDE_IN_RIGHT = 'slide_in_right'
 export function slideInRight(options?: { open: boolean}) {
-    console.log(options);
+    const start = options.open ? '-100%' : 0;
+    const end = options.open ? 0 : '-100%';
+    return {
+        easing: 'linear',
+        translateX: [start,  end],
+        opacity: [options.open ? 0 : 1, options.open ? 1 : 0],
+        duration: 300
+    }
 }
 
 export const animations = {

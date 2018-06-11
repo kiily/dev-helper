@@ -1,5 +1,6 @@
-import { Component, Prop, State } from '@stencil/core';
+import { Component, Prop, Element } from '@stencil/core';
 import { RouterHistory } from '@stencil/router';
+import { setAnimation, animations } from '../../animations';
 
 @Component({
   tag: 'app-home',
@@ -10,7 +11,12 @@ export class AppHome {
 
   @Prop() history: RouterHistory;
 
-  @State() isMenuOpen: boolean = false;
+  private isMenuOpen: boolean = false;
+
+  private sideMenu: HTMLDevSideMenuElement;
+  private cardsContainer: HTMLDivElement;
+
+  @Element() host: HTMLElement;
   
   angular = {
     imgSrc: './assets/topics/angular-logo.svg',
@@ -24,6 +30,11 @@ export class AppHome {
     subtitle: 'Take control of CMD'
   }
 
+  componentDidLoad() {
+    this.sideMenu = this.host.querySelector('dev-side-menu');
+    this.cardsContainer = this.host.querySelector('.cards-container');
+  }
+
   navigateToTopic(){
     this.history.push('/topic');
   }
@@ -31,18 +42,32 @@ export class AppHome {
   toggleMenu(event: CustomEvent) {
     if (event) {
       // Toggle menu state
-      this.isMenuOpen = !this.isMenuOpen;
-    }
+      this.isMenuOpen = !this.isMenuOpen;  
 
+      if (this.isMenuOpen) {
+        this.showMenu();
+      } else {
+        this.hideMenu();
+      }
+    }
+  }
+
+  showMenu() {
+    setAnimation(animations.SLIDE_IN_RIGHT, this.sideMenu, { open: true} );
+    this.cardsContainer.style.marginLeft = '25%';      
+  }
+
+  hideMenu() {
+    setAnimation(animations.SLIDE_IN_RIGHT, this.sideMenu, { open: false} );
+    this.cardsContainer.style.marginLeft = '0';
   }
 
   render() {
-    let menuMargin = this.isMenuOpen ? '20%' : '0';
     return [
       <dev-navbar onMenuClicked={(event: CustomEvent) => this.toggleMenu(event)} heading="dev(h)el(o)per"></dev-navbar>,
       <ion-content>
-        {this.isMenuOpen ? <dev-side-menu></dev-side-menu> : null}
-        <div style={{ 'margin-left': menuMargin }} class="cards-container">
+        <dev-side-menu></dev-side-menu>
+        <div class="cards-container">
             <topic-card onCardClicked={this.navigateToTopic.bind(this)}topic={this.angular}></topic-card>
             <topic-card onCardClicked={this.navigateToTopic.bind(this)}topic={this.angular}></topic-card>
             <topic-card onCardClicked={this.navigateToTopic.bind(this)}topic={this.angular}></topic-card>
